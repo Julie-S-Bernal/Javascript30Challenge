@@ -58,7 +58,29 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+function playSound(e){
+  //  I only target one element so I use querySelector rather than querySelectorAll
+  //  I target my value to the associated key code to match them
+const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+if(!audio) return;
+  // Play only happends once. If I hit the key again and it is already playing
+  // It won't get trigerred again
+audio.currentTime = 0 // rewind to start to enable me to hit is consecutively
+audio.play();
+  //  I can use add to target a class and just add it when I hit my key
+key.classList.add('playing');
 
+}
+function removeTransition(e) {
+ if(e.propertyName !== 'transform') return;
+ e.target.classList.remove('playing');
+}
+// In this case I target everything so I can listen to all keys
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+
+window.addEventListener('keydown', playSound );
 </script>
 
 
