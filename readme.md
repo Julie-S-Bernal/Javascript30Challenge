@@ -1,3 +1,8 @@
+You can clone the original repositery here: git@github.com:wesbos/JavaScript30.git
+
+I just wanted to have my own version online where I can access my notes. 
+
+
 ![](https://javascript30.com/images/JS3-social-share.png)
 
 # JavaScript30
