@@ -31,6 +31,19 @@ function findMatches(wordToMatch, cities) {
 }
 
 function numberWithCommas(x) {
+//   \B assert position where \b does not match
+// Positive Lookahead (?=(\d{3})+(?!\d))
+// Assert that the Regex below matches
+// 1st Capturing Group (\d{3})+
+// + Quantifier — Matches between one and unlimited times, as many times as possible, giving back as needed (greedy)
+// A repeated capturing group will only capture the last iteration. Put a capturing group around the repeated group to capture all iterations or use a non-capturing group instead if you're not interested in the data
+// \d{3} matches a digit (equal to [0-9])
+// {3} Quantifier — Matches exactly 3 times
+// Negative Lookahead (?!\d)
+// Assert that the Regex below does not match
+// \d matches a digit (equal to [0-9])
+// Global pattern flags
+// g modifier: global. All matches (don't return after first match)
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
